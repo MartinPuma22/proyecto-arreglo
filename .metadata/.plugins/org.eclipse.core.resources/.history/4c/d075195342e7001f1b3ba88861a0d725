@@ -1,0 +1,10 @@
+package clases;
+
+public class Retiro 
+{	//Declarar Atributos privados
+	private int numRetiro, numMatricula;
+	private String fecha, hora;
+	//Constructor
+	
+
+}

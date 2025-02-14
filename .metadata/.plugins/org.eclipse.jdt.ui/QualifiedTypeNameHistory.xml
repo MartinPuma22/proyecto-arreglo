@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+    <fullyQualifiedTypeName name="guis.DlgCurso"/>
+    <fullyQualifiedTypeName name="guis.DlgMatricula"/>
+    <fullyQualifiedTypeName name="guis.DlgMatriculasRetiros"/>
+    <fullyQualifiedTypeName name="guis.DlgAlumno"/>
+    <fullyQualifiedTypeName name="arreglos.ArregloAlumno"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="guis.DlgRetiro"/>
+    <fullyQualifiedTypeName name="guis.DlgMatriculaPeendiente"/>
+    <fullyQualifiedTypeName name="guis.DlgMatriculaPendiente"/>
+    <fullyQualifiedTypeName name="guis.DlgMatriculaVigente"/>
+    <fullyQualifiedTypeName name="guis.DlgAlumnosCursos"/>
+    <fullyQualifiedTypeName name="guis.DlgAlumnosMatriculados"/>
+</qualifiedTypeNameHistroy>

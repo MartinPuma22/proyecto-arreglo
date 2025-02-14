@@ -1,0 +1,22 @@
+package clases;
+
+public class Alumno 
+{	//Declarar Atributos privados
+	private int codAlumno, edad, celular, sexo, estado;
+	private String nombres, apellidos, dni;
+	//Constructor
+	public Alumno(int codAlumno, int edad, int celular, int sexo, int estado, String nombres, String apellidos,
+			String dni) {
+		this.codAlumno = codAlumno;
+		this.edad = edad;
+		this.celular = celular;
+		this.sexo = sexo;
+		this.estado = estado;
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.dni = dni;
+	}
+	
+	
+
+}

@@ -1,0 +1,192 @@
+package guis;
+
+import arreglos.ArregloCurso;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+
+
+public class DlgCurso extends JDialog implements ActionListener {
+	
+	private JLabel lblCodigo;
+	private JLabel lblAsignatura;
+	private JLabel lblCiclo;
+	private JLabel lblCreditos;
+	private JLabel lblCantHoras;
+	private JTextField txtCodigo;
+	private JTextField txtAsignatura;
+	private JTextField txtCredito;
+	private JTextField txtHoras;
+	private JComboBox <String> cboOperacion;
+	private JButton btnGrabar;
+	private JScrollPane scrollPane;
+	private JTable tblCurso;
+	private DefaultTableModel modelo;
+	private JComboBox cmbCiclo;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgCurso dialog = new DlgCurso();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgCurso() {
+		setResizable(false);
+		setTitle("Mantenimiento | Curso");
+		setBounds(100, 100, 810, 610);
+		getContentPane().setLayout(null);
+		
+		lblCodigo = new JLabel("Codigo");
+		lblCodigo.setBounds(22, 11, 50, 23);
+		getContentPane().add(lblCodigo);
+		
+		lblAsignatura = new JLabel("Asignatura");
+		lblAsignatura.setBounds(22, 36, 70, 23);
+		getContentPane().add(lblAsignatura);
+	
+		lblCiclo = new JLabel("Ciclo");
+		lblCiclo.setBounds(22, 61, 70, 23);
+		getContentPane().add(lblCiclo);
+		
+		lblCreditos = new JLabel("Creditos");
+		lblCreditos.setBounds(22, 86, 70, 23);
+		getContentPane().add(lblCreditos);
+		
+		lblCantHoras = new JLabel("Cantidad de horas");
+		lblCantHoras.setBounds(22, 111, 118, 23);
+		getContentPane().add(lblCantHoras);
+		
+		txtCodigo = new JTextField("");
+		txtCodigo.setBounds(134, 11, 86, 23);
+		getContentPane().add(txtCodigo);
+		txtCodigo.setEditable(false);
+		txtCodigo.setColumns(10);
+
+		txtAsignatura = new JTextField();
+		txtAsignatura.setBounds(134, 36, 233, 23);
+		getContentPane().add(txtAsignatura);
+		txtAsignatura.setColumns(10);
+		
+		txtCredito = new JTextField();
+		txtCredito.setBounds(134, 86, 86, 23);
+		getContentPane().add(txtCredito);
+		txtCredito.setColumns(10);
+
+		txtHoras = new JTextField();
+		txtHoras.setBounds(134, 111, 86, 23);
+		getContentPane().add(txtHoras);
+		txtHoras.setColumns(10);
+
+		cmbOperacion = new JComboBox <String> ();
+		cmbOperacion.addActionListener(this);
+		cmbOperacion.setModel(new DefaultComboBoxModel <String>
+		                     (new String[] {"Adicionar", "Consultar", "Modificar", "Eliminar"}));
+		cboOperacion.setBounds(671, 11, 99, 23);
+		getContentPane().add(cmbOperacion);
+	
+		btnGrabar = new JButton("Grabar");
+		btnGrabar.addActionListener(this);
+		btnGrabar.setBounds(671, 111, 100, 23);
+		getContentPane().add(btnGrabar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 145, 775, 415);
+		getContentPane().add(scrollPane);
+		
+		tblCurso = new JTable();
+		tblCurso.setFillsViewportHeight(true);
+		scrollPane.setViewportView(tblCurso);
+
+		modelo = new DefaultTableModel();
+		modelo.addColumn("CODIGO");
+		modelo.addColumn("ASIGNATURA");
+		modelo.addColumn("CICLO");
+		modelo.addColumn("CREDITOS");
+		modelo.addColumn("HORAS");
+		tblCurso.setModel(modelo);
+		
+		cmbCiclo = new JComboBox <String> ();
+		cmbCiclo.setModel(new DefaultComboBoxModel  <String>
+						 (new String[] {"Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto"}));
+		cmbCiclo.setBounds(133, 61, 87, 22);
+		getContentPane().add(cmbCiclo);
+				
+				
+		ajustarAnchoColumnas();
+		listar();
+	}
+			
+		//  Declaración global
+		
+			
+	public void actionPerformed(ActionEvent arg0) {
+			if (arg0.getSource() == btnGrabar) {
+					actionPerformedBtnGrabar(arg0);
+				}
+			if (arg0.getSource() == cboOperacion) {
+				actionPerformedCmbOperacion(arg0);
+			}
+		}
+	protected void actionPerformedCmbOperacion(ActionEvent arg0) 
+		{	
+			
+				
+			
+		}
+	protected void actionPerformedBtnGrabar(ActionEvent arg0) {
+				
+		}
+	//  Métodos tipo void (sin parámetros)
+	void ajustarAnchoColumnas() 
+	{	TableColumnModel tcm = tblCurso.getColumnModel();
+		tcm.getColumn(0).setPreferredWidth(anchoColumna( 6));  // codigo
+		tcm.getColumn(1).setPreferredWidth(anchoColumna(30));  // nombres y apellidos
+		tcm.getColumn(2).setPreferredWidth(anchoColumna( 6));  // dni/ce
+		tcm.getColumn(3).setPreferredWidth(anchoColumna( 6));  // sexo
+		tcm.getColumn(4).setPreferredWidth(anchoColumna( 4));  // edad			
+	}
+	void listar() {
+		
+	}
+
+
+	public void setModal(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+	//  Métodos que retornan valor (con parámetros)
+	int anchoColumna(int porcentaje) {
+		return porcentaje * scrollPane.getWidth() / 100;
+	}
+	
+	double ajustar(double numero) {
+		return (int)(numero * 10) / 10.0;
+	}
+	int confirmar(String s) {
+		return JOptionPane.showConfirmDialog(this, s, "Alerta", 0, 1, null);
+	}
+	
+}

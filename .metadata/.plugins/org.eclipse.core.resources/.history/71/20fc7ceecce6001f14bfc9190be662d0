@@ -1,0 +1,237 @@
+package guis;
+
+import java.awt.EventQueue;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+
+import arreglos.ArregloAlumno;
+
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+
+public class DlgAlumno extends JDialog implements ActionListener {
+
+	private JLabel lblCodigo;
+	private JLabel lblNombre;
+	private JLabel lblEdad;
+	private JLabel lblTipoDoc;
+	private JLabel lblCelular;
+	private JLabel lblSexo;
+	private JTextField txtCodigo;
+	private JTextField txtNombre;
+	private JTextField txtEdad;
+	private JTextField txtCelular;
+
+	private JTextField txtApellidos;
+	private JComboBox cmbTipoDoc;
+	private JLabel lblApellidos;
+	private JTextField txtNumDoc;
+	private JComboBox <String> cmbSexo;
+	private JComboBox <String> cboOperacion;
+	private JButton btnGrabar;
+	private JScrollPane scrollPane;
+	private JTable tblAlumno;
+	private DefaultTableModel modelo;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DlgAlumno dialog = new DlgAlumno();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgAlumno() {	
+		setResizable(false);
+		setTitle("Mantenimiento | Alumno");
+		setBounds(100, 100, 810, 610);
+		getContentPane().setLayout(null);
+		
+		lblCodigo = new JLabel("C\u00F3digo");
+		lblCodigo.setBounds(21, 11, 50, 23);
+		getContentPane().add(lblCodigo);
+		
+		lblNombre = new JLabel("Nombres");
+		lblNombre.setBounds(21, 38, 70, 23);
+		getContentPane().add(lblNombre);
+	
+		lblEdad = new JLabel("Edad");
+		lblEdad.setBounds(21, 91, 70, 23);
+		getContentPane().add(lblEdad);
+		
+		lblTipoDoc = new JLabel("Tipo Documento");
+		lblTipoDoc.setBounds(21, 64, 99, 23);
+		getContentPane().add(lblTipoDoc);
+		
+		lblCelular = new JLabel("Celular");
+		lblCelular.setBounds(21, 118, 70, 23);
+		getContentPane().add(lblCelular);
+		
+		lblSexo = new JLabel("Sexo");
+		lblSexo.setBounds(323, 64, 70, 23);
+		getContentPane().add(lblSexo);
+		
+		txtCodigo = new JTextField("");
+		txtCodigo.setBounds(117, 11, 86, 23);
+		getContentPane().add(txtCodigo);
+		txtCodigo.setEditable(false);
+		txtCodigo.setColumns(10);
+
+		txtNombre = new JTextField();
+		txtNombre.setBounds(117, 37, 178, 23);
+		getContentPane().add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		txtEdad = new JTextField();
+		txtEdad.setBounds(117, 90, 86, 23);
+		getContentPane().add(txtEdad);
+		txtEdad.setColumns(10);
+
+		txtCelular = new JTextField();
+		txtCelular.setBounds(117, 116, 86, 23);
+		getContentPane().add(txtCelular);
+		txtCelular.setColumns(10);
+		
+		lblApellidos = new JLabel("Apellidos");
+		lblApellidos.setBounds(323, 38, 70, 23);
+		getContentPane().add(lblApellidos);
+		
+		txtApellidos = new JTextField();
+		txtApellidos.setColumns(10);
+		txtApellidos.setBounds(389, 37, 178, 23);
+		getContentPane().add(txtApellidos);
+		
+		cmbTipoDoc = new JComboBox();
+		cmbTipoDoc.setModel(new DefaultComboBoxModel(new String[] {"DNI", "CE"}));
+		cmbTipoDoc.setBounds(117, 64, 86, 22);
+		getContentPane().add(cmbTipoDoc);
+		
+		txtNumDoc = new JTextField();
+		txtNumDoc.setEditable(false);
+		txtNumDoc.setBounds(209, 65, 86, 20);
+		getContentPane().add(txtNumDoc);
+		txtNumDoc.setColumns(10);
+
+		cmbSexo = new JComboBox <String> ();
+		cmbSexo.setModel(new DefaultComboBoxModel(new String[] {"Femenino", "Masculino"}));
+		cmbSexo.setBounds(389, 65, 86, 23);
+		getContentPane().add(cmbSexo);
+
+		cboOperacion = new JComboBox <String> ();
+		cboOperacion.addActionListener(this);
+		cboOperacion.setModel(new DefaultComboBoxModel(new String[] {"Adicionar", "Consultar", "Modificar", "Eliminar"}));
+		cboOperacion.setBounds(669, 11, 99, 23);
+		getContentPane().add(cboOperacion);
+	
+		btnGrabar = new JButton("Grabar");
+		btnGrabar.addActionListener(this);
+		btnGrabar.setBounds(668, 111, 100, 23);
+		getContentPane().add(btnGrabar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 145, 775, 415);
+		getContentPane().add(scrollPane);
+		
+		tblAlumno = new JTable();
+		tblAlumno.setFillsViewportHeight(true);
+		scrollPane.setViewportView(tblAlumno);
+
+		modelo = new DefaultTableModel();
+		modelo.addColumn("CODIGO");
+		modelo.addColumn("NOMBRES Y APELLIDOS");
+		modelo.addColumn("DNI / CE");
+		modelo.addColumn("SEXO");
+		modelo.addColumn("EDAD");
+		modelo.addColumn("CELULAR");
+		tblAlumno.setModel(modelo);		
+		
+		ajustarAnchoColumnas();
+		listar();
+	}
+	
+	//  Declaración global
+
+	
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == btnGrabar) {
+			actionPerformedBtnGrabar(arg0);
+		}
+		if (arg0.getSource() == cboOperacion) {
+			actionPerformedCboOperacion(arg0);
+		}
+	}
+	protected void actionPerformedCboOperacion(ActionEvent arg0) {
+		
+		
+	}
+	protected void actionPerformedBtnGrabar(ActionEvent arg0) 
+	{
+		
+	}
+	//  Métodos tipo void (sin parámetros)
+	void ajustarAnchoColumnas() 
+	{	TableColumnModel tcm = tblAlumno.getColumnModel();
+		tcm.getColumn(0).setPreferredWidth(anchoColumna( 6));  // codigo
+		tcm.getColumn(1).setPreferredWidth(anchoColumna(30));  // nombres y apellidos
+		tcm.getColumn(2).setPreferredWidth(anchoColumna( 8));  // dni/ce
+		tcm.getColumn(3).setPreferredWidth(anchoColumna( 8));  // sexo
+		tcm.getColumn(4).setPreferredWidth(anchoColumna( 4));  // edad
+		tcm.getColumn(5).setPreferredWidth(anchoColumna( 8));  // celular
+			
+	}
+	void listar() {
+		
+	}
+
+
+	public void setModal(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+//  Métodos que retornan valor (con parámetros)
+	int anchoColumna(int porcentaje) {
+		return porcentaje * scrollPane.getWidth() / 100;
+	}
+	String enTextoSexo(int i) {
+		return cmbSexo.getItemAt(i);
+	}
+	double ajustar(double numero) {
+		return (int)(numero * 10) / 10.0;
+	}
+	int confirmar(String s) {
+		return JOptionPane.showConfirmDialog(this, s, "Alerta", 0, 1, null);
+	}
+	
+	
+}

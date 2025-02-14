@@ -1,0 +1,103 @@
+package guis;
+
+import java.awt.EventQueue;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+
+public class DlgMatricula extends JDialog implements ActionListener
+{	/*private JTextField txtAsignatura, txtCiclo, txtCreditos, txtHoras, txtCodigo;
+    private JComboBox<String> cboAccion;
+    private JTable tblDatos;
+    private JButton btnOK;*/
+	
+	/**
+	 * Launch the application.
+	 */
+
+    public static void main(String[] args) {
+    	EventQueue.invokeLater(new Runnable() {
+			public void run() {
+		        try {
+		            DlgMatricula dialog = new DlgMatricula();
+		            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		            dialog.setVisible(true);
+		        } 
+		        catch (Exception e) {
+		            e.printStackTrace();
+		        }
+			}
+    	});				
+    }
+    /**
+	 * Create the dialog.
+	 */
+    public DlgMatricula() {
+    	setResizable(false);
+        setTitle("Mantenimiento | Matrícula");
+        setBounds(100, 100, 600, 400);
+        getContentPane().setLayout(null);
+
+        // Etiquetas y campos de texto
+        JLabel lblAsignatura = new JLabel("Asignatura:");
+        lblAsignatura.setBounds(20, 20, 100, 25);
+        getContentPane().add(lblAsignatura);
+
+        txtAsignatura = new JTextField();
+        txtAsignatura.setBounds(120, 20, 150, 25);
+        getContentPane().add(txtAsignatura);
+
+        JLabel lblCiclo = new JLabel("Ciclo:");
+        lblCiclo.setBounds(20, 60, 100, 25);
+        getContentPane().add(lblCiclo);
+
+        txtCiclo = new JTextField();
+        txtCiclo.setBounds(120, 60, 150, 25);
+        getContentPane().add(txtCiclo);
+
+        JLabel lblCreditos = new JLabel("Créditos:");
+        lblCreditos.setBounds(20, 100, 100, 25);
+        getContentPane().add(lblCreditos);
+
+        txtCreditos = new JTextField();
+        txtCreditos.setBounds(120, 100, 150, 25);
+        getContentPane().add(txtCreditos);
+
+        JLabel lblHoras = new JLabel("Cantidad de horas:");
+        lblHoras.setBounds(20, 140, 150, 25);
+        getContentPane().add(lblHoras);
+
+        txtHoras = new JTextField();
+        txtHoras.setBounds(120, 140, 150, 25);
+        getContentPane().add(txtHoras);
+
+        JLabel lblCodigo = new JLabel("Código:");
+        lblCodigo.setBounds(350, 20, 100, 25);
+        getContentPane().add(lblCodigo);
+
+        txtCodigo = new JTextField();
+        txtCodigo.setBounds(420, 20, 120, 25);
+        getContentPane().add(txtCodigo);
+
+        cboAccion = new JComboBox<>(new String[]{"Adicionar", "Modificar", "Eliminar"});
+        cboAccion.setBounds(420, 60, 120, 25);
+        getContentPane().add(cboAccion);
+
+        btnOK = new JButton("OK");
+        btnOK.setBounds(420, 100, 120, 25);
+        getContentPane().add(btnOK);
+
+        // Tabla para mostrar datos
+        tblDatos = new JTable(new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"ASIGNATURA", "CICLO", "CREDITOS", "HORAS"}
+        ));
+
+        JScrollPane scrollPane = new JScrollPane(tblDatos);
+        scrollPane.setBounds(20, 200, 540, 150);
+        getContentPane().add(scrollPane);
+    }
+}

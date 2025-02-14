@@ -1,0 +1,11 @@
+package clases;
+
+public class Alumno 
+{	//Declarar Atributos privados
+	private int codAlumno, edad, celular, sexo, estado;
+	private String nombres, apellidos, dni;
+	//Constructor
+	
+	
+
+}

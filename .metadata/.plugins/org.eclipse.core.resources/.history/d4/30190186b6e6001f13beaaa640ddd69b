@@ -1,0 +1,144 @@
+package guis;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+
+
+public class DlgCurso extends JDialog implements ActionListener {
+	
+	private JLabel lblCodigo;
+	private JLabel lblNombre;
+	private JLabel lblDni;
+	private JLabel lblPeso;
+	private JLabel lblEstatura;
+	private JTextField txtCodigo;
+	private JTextField txtAsignatura;
+	private JTextField txtCiclo;
+	private JTextField txtCredito;
+	private JTextField txtHoras;
+	private JComboBox <String> cboOperacion;
+	private JButton btnOK;
+	private JScrollPane scrollPane;
+	private JTable tblCurso;
+	private DefaultTableModel modelo;
+
+	private final JPanel contentPanel = new JPanel();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgCurso dialog = new DlgCurso();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgCurso() {
+		setResizable(false);
+		setTitle("Mantenimiento | Curso");
+		setBounds(100, 100, 810, 610);
+		getContentPane().setLayout(null);
+		
+		lblCodigo = new JLabel("C\u00F3digo");
+		lblCodigo.setBounds(530, 10, 50, 23);
+		getContentPane().add(lblCodigo);
+		
+		lblNombre = new JLabel("Asignatura");
+		lblNombre.setBounds(10, 10, 70, 23);
+		getContentPane().add(lblNombre);
+	
+		lblDni = new JLabel("Ciclo");
+		lblDni.setBounds(10, 35, 70, 23);
+		getContentPane().add(lblDni);
+		
+		lblPeso = new JLabel("Creditos");
+		lblPeso.setBounds(10, 60, 70, 23);
+		getContentPane().add(lblPeso);
+		
+		lblEstatura = new JLabel("Cantidad de horas");
+		lblEstatura.setBounds(10, 85, 100, 23);
+		getContentPane().add(lblEstatura);
+		
+		txtCodigo = new JTextField("" );
+		txtCodigo.setBounds(590, 10, 86, 23);
+		getContentPane().add(txtCodigo);
+		txtCodigo.setEditable(false);
+		txtCodigo.setColumns(10);
+
+		txtAsignatura = new JTextField();
+		txtAsignatura.setBounds(132, 10, 251, 23);
+		getContentPane().add(txtAsignatura);
+		txtAsignatura.setColumns(10);
+
+		txtCiclo = new JTextField();
+		txtCiclo.setBounds(132, 35, 86, 23);
+		getContentPane().add(txtCiclo);
+		txtCiclo.setColumns(10);
+		
+		txtCredito = new JTextField();
+		txtCredito.setBounds(132, 60, 50, 23);
+		getContentPane().add(txtCredito);
+		txtCredito.setColumns(10);
+
+		txtHoras = new JTextField();
+		txtHoras.setBounds(132, 85, 50, 23);
+		getContentPane().add(txtHoras);
+		txtHoras.setColumns(10);
+
+		cboOperacion = new JComboBox <String> ();
+		cboOperacion.addActionListener(this);
+		cboOperacion.setModel(new DefaultComboBoxModel <String>
+		                     (new String[] {"Adicionar", "Consultar", "Modificar", "Eliminar"}));
+		cboOperacion.setBounds(685, 10, 99, 23);
+		getContentPane().add(cboOperacion);
+	
+		btnOK = new JButton("OK");
+		btnOK.addActionListener(this);
+		btnOK.setBounds(10, 111, 100, 23);
+		getContentPane().add(btnOK);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 145, 775, 415);
+		getContentPane().add(scrollPane);
+		
+		tblCurso = new JTable();
+		tblCurso.setFillsViewportHeight(true);
+		scrollPane.setViewportView(tblCurso);
+
+		modelo = new DefaultTableModel();
+		modelo.addColumn("ASIGNATURA");
+		modelo.addColumn("CICLO");
+		modelo.addColumn("CREDITOS");
+		modelo.addColumn("HORAS");
+		tblCurso.setModel(modelo);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+C:\Users\Naty\OneDrive\Documentos\IA\CICLO II\Proyecto\.metadata\.plugins\org.eclipse.jdt.core
+14526675.index
+136200506.index
+3836519195.index
+1210653665.index

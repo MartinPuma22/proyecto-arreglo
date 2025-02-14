@@ -1,0 +1,128 @@
+package guis;
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+public class Principal extends JFrame implements ActionListener {
+
+	private JPanel contentPane;
+	private JMenu mnArchivo;
+	private JMenuItem mntmSalir;
+	private JMenu mnMantenimiento;
+	private JMenuItem mntmAlumno;
+	private JMenuItem mntmCurso;
+	private JMenu mnRegistro;
+	private JMenuItem mntmMatricula;
+	private JMenuItem mntmRetiro;
+	private JMenu mnConsulta;
+	private JMenuItem mntmAlumnosCursos;
+	private JMenuItem mntmMatriculasRetiros;
+	private JMenu mnReporte;
+	private JMenuItem mntmMatriculaPendiente;
+	private JMenuItem mntmMatriculaVigente;
+	private JMenuItem mntmMatriculadosCursos;
+	private JMenuBar menuPrincipal;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Principal frame = new Principal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Principal() {
+		setTitle("Registro y Matricula de Alumnos");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		
+		menuPrincipal = new JMenuBar();
+		setJMenuBar(menuPrincipal);
+			
+		mnArchivo = new JMenu("Archivo");
+		menuPrincipal.add(mnArchivo);
+		
+		mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(this);
+		mnArchivo.add(mntmSalir);
+		
+		mnMantenimiento = new JMenu("Mantenimiento");
+		menuPrincipal.add(mnMantenimiento);
+		
+		mntmAlumno = new JMenuItem("Alumno");
+		mnMantenimiento.add(mntmAlumno);
+		
+		mntmCurso = new JMenuItem("Curso");
+		mnMantenimiento.add(mntmCurso);
+		
+		mnRegistro = new JMenu("Registro");
+		menuPrincipal.add(mnRegistro);
+		
+		mntmMatricula = new JMenuItem("Matricula");
+		mnRegistro.add(mntmMatricula);
+		
+		mntmRetiro = new JMenuItem("Retiro");
+		mnRegistro.add(mntmRetiro);
+		
+		mnConsulta = new JMenu("Consulta");
+		menuPrincipal.add(mnConsulta);
+		
+		mntmAlumnosCursos = new JMenuItem("Alumnos y cursos ");
+		mnConsulta.add(mntmAlumnosCursos);
+		
+		mntmMatriculasRetiros = new JMenuItem("Matriculas y retiros");
+		mnConsulta.add(mntmMatriculasRetiros);
+		
+		mnReporte = new JMenu("Reporte");
+		menuPrincipal.add(mnReporte);
+		
+		mntmMatriculaPendiente = new JMenuItem("Alumnos con matricula pendiente");
+		mnReporte.add(mntmMatriculaPendiente);
+		
+		mntmMatriculaVigente = new JMenuItem("Alumnos con matricula vigente");
+		mnReporte.add(mntmMatriculaVigente);
+		
+		mntmMatriculadosCursos = new JMenuItem("Alumnos matriculados por curso");
+		mnReporte.add(mntmMatriculadosCursos);
+		contentPane = new JPanel();
+		contentPane.setToolTipText("");
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+	}
+	public void actionPerformed(ActionEvent e)
+	{	if(e.getSource() == mntmSalir)
+		{	actionPerformedMntmSalir(e);	}
+	
+		//if(e.getSource() == mntmAlumno)
+		//{	actionPerformedMntmAlumno(e);	}		
+	}
+	protected void actionPerformedMntmSalir(ActionEvent e) {
+		
+	}
+	protected void actionPerformedMntmPersona(ActionEvent e) {
+
+	}
+	
+}
+
+

@@ -1,0 +1,9 @@
+package clases;
+
+public class Matricula 
+{	//  Atributos privados
+	private int numMatricula, codAlumno, codCurso;
+	private String fecha, hora;
+	
+
+}
