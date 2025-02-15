@@ -1,49 +1,62 @@
 package clases;
 
-public class Curso 
-{	//Declarar Atributos privados
-	private int codCurso, ciclo, creditos, horas;
+public class Curso {
+
+	private Long codCurso;
+	private int ciclo;
+	private int cantidadCreditos;
+	private int horas;
 	private String asignatura;
-	//  Constructor
-	public Curso(int codCurso, int ciclo, int creditos, int horas, String asignatura) {
-		this.codCurso = codCurso;
-		this.ciclo = ciclo;
-		this.creditos = creditos;
-		this.horas = horas;
-		this.asignatura = asignatura;
-	}
-	//  Métodos de acceso público: set/get
-	public int getCodCurso() {
+
+	public Long getCodCurso() {
 		return codCurso;
 	}
-	public void setCodCurso(int codCurso) {
+
+	public void setCodCurso(Long codCurso) {
 		this.codCurso = codCurso;
 	}
+
 	public int getCiclo() {
 		return ciclo;
 	}
+
 	public void setCiclo(int ciclo) {
 		this.ciclo = ciclo;
 	}
-	public int getCreditos() {
-		return creditos;
+
+	public int getCantidadCreditos() {
+		return cantidadCreditos;
 	}
-	public void setCreditos(int creditos) {
-		this.creditos = creditos;
+
+	public void setCantidadCreditos(int cantidadCreditos) {
+		this.cantidadCreditos = cantidadCreditos;
 	}
+
 	public int getHoras() {
 		return horas;
 	}
+
 	public void setHoras(int horas) {
 		this.horas = horas;
 	}
+
 	public String getAsignatura() {
 		return asignatura;
 	}
+
 	public void setAsignatura(String asignatura) {
 		this.asignatura = asignatura;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "Course{" +
+				"codCurso=" + codCurso +
+				", ciclo=" + ciclo +
+				", cantidadCreditos=" + cantidadCreditos +
+				", horas='" + horas + '\'' +
+				", asignatura='" + asignatura + '\'' +
+				'}';
+	}
 }
+
